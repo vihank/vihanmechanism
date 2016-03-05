@@ -10,6 +10,12 @@ import com.qualcomm.robotcore.util.Range;
 public class vihanmechanism extends OpMode {
 
 
+
+    final static double servo_MIN_RANGE  = 0.20;
+    final static double servo_MAX_RANGE  = 0.90;
+
+
+
     double servoGripPosition;
 
     double servoDelta = 1;
@@ -85,6 +91,10 @@ public class vihanmechanism extends OpMode {
             servoPosition -= servoDelta;
 
         }
+
+        servoPosition = Range.clip(servoPosition,servo_MIN_RANGE,servo_MAX_RANGE);
+
+        servoGrip.setPosition(servoPosition);
 
     }
 
